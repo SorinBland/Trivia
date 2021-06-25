@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Error
+{% endblock %}
+
+{% block content %}
+    <h2 class="lead"> There are not enough questions as requested for this catergory/difficulty, please choose again.</h2>
+    <a href="{% url 'select_choices' %}">
+        <button class="btn btn-dark" href="{{ select_choices }}">Try again!</button>
+    </a>
+
+{% endblock %}

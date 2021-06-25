@@ -1,0 +1,4 @@
+/local_settings/
+/.idea/
+/venv
+/test.py/

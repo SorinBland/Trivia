@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Quiz
+{% endblock %}
+
+{% block content %}
+    <form method="post" action={% url 'start_game' %}>
+        {% csrf_token %}
+        <h2 class="lead">How many questions would you like:</h2>
+
+        <input class="custom-select" name="quantity" type="number" min="5" max="{{ max_questions }}" value="10" style="width: 100px">
+        <div style="padding-bottom: 20px"></div>
+
+        <h2 class="lead">Choose the difficulty level desired:</h2>
+        <select class="custom-select" name="difficulty" style="width: 100px">
+            {% for dif in difficulty %}
+                <option value="{{ dif }}">{{ dif }}</option>
+            {% endfor %}
+        </select>
+        <div style="padding-bottom: 20px"></div>
+
+        <h2 class="lead">Select a category:</h2>
+        <select class="custom-select" name="category" style="width: 200px">
+            {% for cat in categories.values %}
+                <option value="{{ cat }}">{{ cat }}</option>
+            {% endfor %}
+        </select>
+        <div style="padding-bottom: 20px"></div>
+
+        <button class="btn btn-dark" type="submit" value="start" href="{{ start_game }}">Start game</button>
+    </form>
+{% endblock %}

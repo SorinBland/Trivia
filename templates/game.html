@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Trivia Game
+{% endblock %}
+
+
+{% block content %}
+
+    <h1 class="lead"> Question: {{ new_player.current_question }}</h1>
+    <h2 class="lead"> Score: {{ new_player.score }}</h2>
+    <div style="padding-bottom: 20px"></div>
+    <h2> {{ question.question|safe }}</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+        {% for answer in all_answers %}
+            <label>
+                <input type="radio" name="answer" value="{{ answer }}"
+                       {% if forloop.first %}checked{% endif %}> {{ answer|safe }}
+            </label>
+        {% endfor %}
+        <div style="padding-bottom: 20px"></div>
+        <button class="btn btn-dark" type="submit" name="next">Next</button>
+    </form>
+{% endblock %}

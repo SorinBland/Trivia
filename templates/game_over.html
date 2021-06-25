@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    End of the line!
+{% endblock %}
+
+{% block content %}
+    <h2>Congratulations, you finished the game!</h2>
+    <h3>Your score is: {{ score }}/{{ max }}</h3>
+    <h3>Do you want to try again?</h3>
+    <a href="{% url 'select_choices' %}"><button class="btn btn-dark" href="{{ select_choices }}">Play again!</button></a>
+{% endblock %}
